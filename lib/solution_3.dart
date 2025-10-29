@@ -1,21 +1,27 @@
 import 'dart:math';
 
 /// #Medium
-/// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 /// 
+/// #slide_window
+/// https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+///
 
 class Solution {
-
   int lengthOfLongestSubstring(String s) {
-    final map = <String, int>{};
     int left = 0;
     int longest = 0;
-    for (int right = 0; right < s.length; right++) {
-      if (map.containsKey(s[right]) && map[s[right]]! >= left) {
+    var seen = <int, int>{};
 
-        left = map[s[right]]! + 1;
-      } 
-      map[s[right]] = right;
+    final codeUnits = s.codeUnits;
+
+    for (int right = 0; right < codeUnits.length; right++) {
+      final code = codeUnits[right];
+
+      if (seen.containsKey(code) && seen[code]! >= left) {
+        left = seen[code]! + 1;
+      }
+
+      seen[code] = right;
       longest = max(longest, right - left + 1);
     }
 
