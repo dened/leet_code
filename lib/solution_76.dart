@@ -54,9 +54,9 @@ class Solution {
     final windowCounts = <String, int>{};
     int have = 0;
     final int tTotal = tCounts.length;
+    
     int left = 0;
     int resLeft = -1;
-    int resRight = -1;
     int resLen = -1;
 
     for (int right = 0; right < s.length; right++) {
@@ -71,7 +71,6 @@ class Solution {
         if (resLen == -1 || (right - left + 1) < resLen) {
           resLen = right - left + 1;
           resLeft = left;
-          resRight = right;
         }
 
         final leftChar = s[left];
@@ -89,6 +88,6 @@ class Solution {
       return "";
     }
 
-    return s.substring(resLeft, resRight + 1);
+    return s.substring(resLeft, resLeft + resLen);
   }
 }
