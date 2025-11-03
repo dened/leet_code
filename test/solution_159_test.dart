@@ -1,4 +1,4 @@
-import 'package:leet_code/solution_159.dart';
+import 'package:leet_code/src/solution_159.dart';
 import 'package:test/test.dart';
 
 void main() {
