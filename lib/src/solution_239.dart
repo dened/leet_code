@@ -39,24 +39,23 @@
 /// 1 <= k <= nums.length
 ///
 
-import 'dart:collection';
-
 class Solution {
   List<int> maxSlidingWindow(List<int> nums, int k) {
-    if (nums.isEmpty || k == 0) return [];
-    final deque = DoubleLinkedQueue<int>();
     final result = <int>[];
-    for (int i = 0; i < nums.length; i++) {
-      if (deque.isNotEmpty && deque.first <= i - k) {
-        deque.removeFirst();
+    final queue = <int>[];
+    for (int right = 0; right < nums.length; right++) {
+      if(queue.isNotEmpty && queue.first <= right - k) queue.removeAt(0);
+
+      while(queue.isNotEmpty && nums[queue.last] < nums[right]) {
+        queue.removeLast();
       }
 
-      while (deque.isNotEmpty && nums[deque.last] <= nums[i]) {
-        deque.removeLast();
-      }
-      deque.addLast(i);
-      if (i >= k - 1) result.add(nums[deque.first]);
+      queue.add(right);
+
+      if(right >= k -1) result.add(nums[queue.first]);
+   
     }
+
     return result;
   }
 }
