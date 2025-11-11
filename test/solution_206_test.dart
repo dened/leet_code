@@ -1,30 +1,7 @@
 import 'package:leet_code/src/solution_206.dart';
 import 'package:test/test.dart';
 
-// Helper function to create a linked list from a list of integers
-ListNode? createLinkedList(List<int> values) {
-  if (values.isEmpty) {
-    return null;
-  }
-  ListNode head = ListNode(values[0]);
-  ListNode current = head;
-  for (int i = 1; i < values.length; i++) {
-    current.next = ListNode(values[i]);
-    current = current.next!;
-  }
-  return head;
-}
-
-// Helper function to convert a linked list back to a list of integers
-List<int> linkedListToList(ListNode? head) {
-  final list = <int>[];
-  ListNode? current = head;
-  while (current != null) {
-    list.add(current.val);
-    current = current.next;
-  }
-  return list;
-}
+import 'utils/utils.dart';
 
 void main() {
   group('Reverse Linked List', () {

@@ -1,3 +1,5 @@
+import 'package:leet_code/src/structure/list_node.dart';
+
 /// 19. Remove Nth Node From End of List
 /// Attempted
 /// Medium
@@ -33,12 +35,6 @@
 ///
 ///
 /// Follow up: Could you do this in one pass?
-
-class ListNode {
-  int val;
-  ListNode? next;
-  ListNode([this.val = 0, this.next]);
-}
 
 class Solution {
   ListNode? removeNthFromEnd(ListNode? head, int n) {
